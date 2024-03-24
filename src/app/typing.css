@@ -1,0 +1,77 @@
+
+
+/* Importé de https://codepen.io/alvaromontoro/pen/rNwVpdd */
+@keyframes typing {
+  0%, 27% { content: ""; }
+  1.1395%, 26.2093% { content: "E"; }
+  2.279%, 25.4186% { content: "En"; }
+  3.4185%, 24.628% { content: "Eni"; }
+
+  30.4185%, 53.6279% { content: "" ; }
+  31.5581%, 52.8372% { content: "Y"; }
+  32.6977%, 52.0465% { content: "Ya"; }
+  33.8372%, 51.2558% { content: "Yas"; }
+  34.9767%, 50.4651% { content: "Yass"; }
+  36.1163%, 49.6744% { content: "Yassi"; }
+  37.2558%, 48.8837% { content: "Yassin"; }
+  38.3953%, 48.093% { content: "Yassine"; }
+
+  55.3953%, 78.6047% { content: ""; }
+  56.5349%, 77.814% { content: "M"; }
+  57.6744%, 77.0233% { content: "Mo"; }
+  58.8139%, 76.2326% { content: "Moi"; }
+
+  80.8139%, 100% { content: ""; }
+  81.9535%, 99.2093% { content: "E"; }
+  83.093%, 98.4186% { content: "En"; }
+  84.2326%, 97.6279% { content: "Eno"; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter {
+  --caret: currentcolor;
+}
+
+.typewriter::before {
+  content: "";
+  animation: typing 13.5s infinite;
+}
+
+.typewriter::after {
+  content: "";
+  border-right: 1px solid var(--caret);
+  animation: blink 0.5s linear infinite;
+}
+
+.typewriter.thick::after {
+  border-right: 1ch solid var(--caret);
+}
+
+.typewriter.nocaret::after {
+  border-right: 0;
+}
+
+
+@media (prefers-reduced-motion) {
+  .typewriter::after {
+    animation: none;
+  }
+  
+  @keyframes sequencePopup {
+    0%, 100% { content: "Eni"; }
+    25% { content: "Eno"; }
+    50% { content: "Yassine"; }
+    75% { content: "Moi"; }
+  }
+
+  .typewriter::before {
+    content: "Eni";
+    animation: sequencePopup 12s linear infinite;
+  }
+}
+
+/**/

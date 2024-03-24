@@ -1,33 +1,111 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "typing";
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color,border-color,color,box-shadow,filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 17px 48px;
+  color: #fff;
+  background-color: #1ED760;
+  height: 30px;
+  margin: 10px;
+}
+.button:hover{
+    transform: scale(1.04);
+    background-color: #21e065;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.button > a {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-decoration: none;
+  font-size: 30px;
+  text-align: center;
+  color: black;
+  margin-top: 10px;  
+}
+
+@media (min-width: 768px) {
+  .button-36 {
+    padding: 0 2.6rem;
   }
 }
+.center {
+  display: flex;
+  justify-content: center;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.main .special-text {
+  color: black;
+  background-color:white;  
+  position: relative;
+  z-index: 3;
+}
+
+
+
+
+.main .main-title .special-text:hover {
+  color: white; 
+  background-color: rgb(28, 28, 56);
+}
+
+
+.square {
+  background-color: #070606; /* Foreground square */
+  width: 70%; 
+  height: 100px;
+  position: absolute;
+  z-index: -1;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #6a6a6a;
+  width: 60%;
+  padding: 2rem;
+  z-index: 1;
+  height: 500px;
+}
+
+.main > img {
+
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  width: 200px;
+
+}
+
+.main-title 
+{
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #000;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.main-description
+{
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: #000;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
