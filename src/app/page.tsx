@@ -21,36 +21,21 @@ const Buttons = [
     source: ""
   }
 ]
-function changePos(x:Number, y:Number) {
-  var cat_elt = document.getElementById("cat");
-  if (cat_elt) {
-    cat_elt.style.left = `${x}px`;
-    cat_elt.style.top = `${y}px`;
-  }
-}
 
 
-export function CatManager() {
-  const [position, setPosition] = useState({x: 0, y: 0});
-  setInterval(() => {
+
+export function CatManager({position}: {position: {x: number, y: number}}) {
     // Get mouse position
-    document.onmousemove = function(e){
-      if (e.clientX < position.x) {
-        setPosition({x: position.x - 1, y: position.y})
-      } else {
-        setPosition({x: position.x + 1, y: position.y})
-      }
+    
 
-      if (e.clientY < position.y) {
-        setPosition({x: position.x, y: position.y - 1})
-      } else {
-        setPosition({x: position.x, y: position.y + 1})
-      }
+  return <div><img src="cat.png" alt="Catto" id="cat" 
+      style={{
+        position: "absolute", 
+        left: "0px", 
+        top: "0px",
+        transform: `translate(${position.x}px, ${position.y}px)`
+      }} /></div>
 
-      changePos(position.x, position.y);
-    }
-  }, 1000);
-  return <img src="src/assets/cat.png" alt="" id="cat"/>
 
 }
 
@@ -81,8 +66,20 @@ export function Button({content, img, source}: {content: string, img: string, so
 }
 
 export default function Home() {
+  const [position, setPosition] = useState({x: 0, y: 0});
+  var handleMouseMove = (e: any) => {
+    var newPos = {x:position.x, y:position.y};
+    if (e.clientX < position.x) newPos.x = position.x - 1;
+    else if (e.clientX > position.x) newPos.x = position.x + 1;
+
+    if (e.clientY < position.y) newPos.y = position.y - 1;
+    else if (e.clientY > position.y) newPos.y = position.y + 1;
+
+    setPosition(newPos);
+  }
   return (
-    <div className="center">
+    <div className="center" onPointerMove={handleMouseMove}>
+      <CatManager position={position} />
       <Profile />
     </div>
   );
